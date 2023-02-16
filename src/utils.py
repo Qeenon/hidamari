@@ -282,17 +282,6 @@ class WindowHandler:
         is_changed = False
 
         is_any_maximized, is_any_fullscreen = False, False
-        for window in self.screen.get_windows():
-            base_state = not Wnck.Window.is_minimized(window) and \
-                Wnck.Window.is_on_workspace(
-                    window, self.screen.get_active_workspace())
-            window_name, is_maximized, is_fullscreen = window.get_name(), \
-                Wnck.Window.is_maximized(window) and base_state, \
-                Wnck.Window.is_fullscreen(window) and base_state
-            if is_maximized is True:
-                is_any_maximized = True
-            if is_fullscreen is True:
-                is_any_fullscreen = True
 
         cur_state = {"is_any_maximized": is_any_maximized,
                      "is_any_fullscreen": is_any_fullscreen}
